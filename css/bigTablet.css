@@ -1,0 +1,24 @@
+#containerMain {
+    margin: 1rem ;
+    padding: 0.5rem;
+    border: 0.2rem solid #062e51;
+    border-radius: 0.5rem;
+    width: 70%;
+}
+#containerComponents{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.component.col-7{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.component.col-3 {
+    width: 49%;
+}
+.component.col-2{
+    width: 49%;
+}

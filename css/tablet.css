@@ -1,0 +1,32 @@
+#containerMain {
+    margin: 1rem auto   ;
+    padding: 0.5rem;
+    border: 0.2rem solid #062e51;
+    border-radius: 0.5rem;
+    min-width: 96%;
+}
+
+#containerComponents{
+    min-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.component {
+    margin: 2px 0px;
+    padding: 0px 2px;
+}
+
+.component.col-7{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.component.col-3 {
+    width: 49%;
+}
+.component.col-2{
+    width: 49%;
+}

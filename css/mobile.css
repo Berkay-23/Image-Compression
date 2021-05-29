@@ -1,0 +1,43 @@
+#navigation-bar .social li{
+
+    width: 32px;
+    height: 32px;
+}
+
+#navigation-bar .social li a{
+    font-size: 1.25rem;
+}
+
+#navigation-bar h1{
+    font-size: 1.5rem;
+}
+
+#containerMain {
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border: 0.2rem solid #062e51;
+    border-radius: 0.5rem;
+    width: 96%;
+}
+
+#containerComponents{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.component {
+    margin: 2px 0px;
+    padding: 0px 2px;
+}
+
+.component.col-7{
+    width: 100%;
+}
+.component.col-3 {
+    width: 100%;
+}
+.component.col-2{
+    width: 100%;
+}

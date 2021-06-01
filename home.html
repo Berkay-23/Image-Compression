@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="component d-grid col-2">
-                    <button class="btn btn-primary" type="button" id="btnImageCompress">Resmi  Sıkıştır</button>
+                    <button class="btn btn-primary" type="button" id="btnImageCompress">Resmi Sıkıştır</button>
                 </div>
 
                 <div class="component quality col-12">
@@ -130,13 +130,13 @@
         const outSize = document.querySelector(".outSize");
         const ratio = document.querySelector(".ratio");
 
-        inpFile.addEventListener("change", ImagePreview);
-        btnCompress.addEventListener("click", compressImage);
+        inputFile.addEventListener("change", ImagePreview);
+        buttonCompress.addEventListener("click", compressImage);
 
         let file = null;
 
         function ImagePreview() {
-            const image = inpFile.files[0];
+            const image = inputFile.files[0];
             file = image;
         }
 

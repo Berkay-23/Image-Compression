@@ -42,9 +42,12 @@
                 <h1>Image Compression</h1>
 
                 <ul class="social">
-                    <li><a href="https://www.linkedin.com/in/berkay-%C3%A7avu%C5%9Fo%C4%9Flu-289484202/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="https://github.com/Berkay-23/Image-Compression" target="_blank"><i class="fab fa-github"></i></a></li>
-                    <li><a href="https://www.youtube.com/watch?v=G-CUlMbi_RI&list=PLVkmv8ZvDX3dpgjncPJrzT1W2ZNc8UeAO" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/berkay-%C3%A7avu%C5%9Fo%C4%9Flu-289484202/"
+                            target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://github.com/Berkay-23/Image-Compression" target="_blank"><i
+                                class="fab fa-github"></i></a></li>
+                    <li><a href="https://www.youtube.com/watch?v=G-CUlMbi_RI&list=PLVkmv8ZvDX3dpgjncPJrzT1W2ZNc8UeAO"
+                            target="_blank"><i class="fab fa-youtube"></i></a></li>
                 </ul>
 
             </nav>
@@ -72,7 +75,20 @@
                 </div>
 
                 <div class="component d-grid col-2">
-                    <button class="btn btn-primary" type="button" id="btnImagePreview">Resmi Sıkıştır</button>
+                    <button class="btn btn-primary" type="button" id="btnImageCompress">Resmi Sıkıştır</button>
+                </div>
+
+                <div class="component quality col-12">
+
+                    <span> Quality</span>
+
+                    <div class="component range col-4">
+                        <input type="range" class="form-range" min="0.01" max="1" step="0.01" value="0.5"
+                            id="customRange3">
+                    </div>
+
+                    <label class="value"></label>
+
                 </div>
             </div>
         </form>
@@ -85,19 +101,80 @@
         </div>
     </div>
 
+    <div class="datas">
+        <span>Orijinal : <span class="inpSize"> - </span></span>
+        <span><span class="ratio"> -% </span></span>
+        <span>Sıkıştırılmış : <span class="outSize"> - </span></span>
+    </div>
 
+    <br>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
-        crossorigin="anonymous"></script> -->
+    <di class="outputImage">
+        <img src="" alt="" class="output" id="after">
+    </div>
 
     <script src="javascript/app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/browser-image-compression@1.0.14/dist/browser-image-compression.js"></script>
+
+
+    <script>
+
+        const inputFile = document.querySelector("#inpFile");
+        const buttonCompress = document.querySelector("#btnImageCompress");
+        const inpSlider = document.querySelector(".range input");
+
+        const inpSize = document.querySelector(".inpSize");
+        const outSize = document.querySelector(".outSize");
+        const ratio = document.querySelector(".ratio");
+
+        inpFile.addEventListener("change", ImagePreview);
+        btnCompress.addEventListener("click", compressImage);
+
+        let file = null;
+
+        function ImagePreview() {
+            const image = inpFile.files[0];
+            file = image;
+        }
+
+console.log(inpSize)
+
+        function compressImage(event, useWebWorker) {
+
+            console.log('input', file)
+            inpSize.textContent = (((file.size)/1024)/1024).toFixed(2) + 'mb';
+            
+            var options = {
+                maxSizeMB: parseFloat(inpSlider.value),
+                maxWidthOrHeight: parseFloat('1024'),
+                //useWebWorker: true,
+                //onProgress: onProgress
+            }
+
+            imageCompression(file, options).then(function (output) {
+                console.log('output', output)
+                const downloadLink = URL.createObjectURL(output)
+
+                outSize.textContent = (((output.size)/1024)/1024).toFixed(2) + 'mb';
+                ratio.textContent = '%' + ((((file.size)/1024)/1024).toFixed(2)/(((output.size)/1024)/1024).toFixed(2)).toFixed(2);
+
+                // logDom.innerHTML += '&nbsp;<a href="' + downloadLink + '" download="' + file.name + '">download compressed image</a>'
+                document.getElementById('after').src = downloadLink
+            })
+
+
+            // await uploadToServer(output)
+
+            // function onProgress(p) {
+            //     progressDom.innerHTML = '(' + p + '%' + ')'
+            // }
+        }
+
+
+    </script>
 
 </body>
 

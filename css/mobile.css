@@ -41,3 +41,10 @@
 .component.col-2{
     width: 100%;
 }
+.component.range.col-4{
+    width: 80%;
+}
+.component.range input{
+    position: relative;
+    top: 10px;
+}

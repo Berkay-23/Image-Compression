@@ -50,3 +50,22 @@ header{
 #navigation-bar .social :hover{
     color: #707070
 }
+
+.quality{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.range {
+    width : 92%;
+    padding: 5px;
+    height: 38px;
+    border-radius:10px;
+    color: #062e51;;
+}
+
+.range input {
+    position: relative;
+    top: 3px;
+}

@@ -22,3 +22,10 @@
 .component.col-2{
     width: 49%;
 }
+.component.range.col-4{
+    width: 87%;
+}
+.component.range input{
+    position: relative;
+    top: 3px;
+}

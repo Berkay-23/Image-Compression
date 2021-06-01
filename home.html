@@ -101,7 +101,7 @@
         </div>
     </div>
 
-    <div class="datas container">
+    <div class="datas">
         <span>Orijinal : <span class="inpSize"> - </span></span>
         <span><span class="ratio"> -% </span></span>
         <span>Sıkıştırılmış : <span class="outSize"> - </span></span>
@@ -130,13 +130,13 @@
         const outSize = document.querySelector(".outSize");
         const ratio = document.querySelector(".ratio");
 
-        inpFile.addEventListener("change", ImagePreview);
-        btnCompress.addEventListener("click", compressImage);
+        inputFile.addEventListener("change", ImagePreview);
+        buttonCompress.addEventListener("click", compressImage);
 
         let file = null;
 
         function ImagePreview() {
-            const image = inpFile.files[0];
+            const image = inputFile.files[0];
             file = image;
         }
 

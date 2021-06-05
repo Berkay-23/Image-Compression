@@ -128,6 +128,10 @@
 
     <div class="container outputImage" id="containerOutput">
         <img src="" alt="" class="output" id="afterImage">
+
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" id="downloadBtn" type="button"> </button>
+        </div>
     </div>
 
     <div class="alert default">
@@ -153,6 +157,7 @@
         const inpSize = document.querySelector(".inpSize");
         const outSize = document.querySelector(".outSize");
         const ratio = document.querySelector(".ratio");
+        const downloadButton = document.querySelector("#downloadBtn");
 
         inpFile.addEventListener("change", ImagePreview);
         btnCompress.addEventListener("click", compressImage);
@@ -178,10 +183,18 @@
                     outSize.textContent = (((output.size) / 1024) / 1024).toFixed(2);
                     ratio.textContent = '%' + ((((file.size) / 1024) / 1024).toFixed(2) / (((output.size) / 1024) / 1024).toFixed(2)).toFixed(2);
 
-                    document.getElementById('afterImage').src = URL.createObjectURL(output);
+                    downloadURL = URL.createObjectURL(output);
+                    downloadButton.style.visibility = "visible";
+                    downloadButton.innerHTML += '&nbsp;<a href="' + downloadURL + '" download="' + file.name + '">Görseli İndir</a>'
+                    outputFile.src = downloadURL;
                 });
             }
         }
+
+        downloadButton.addEventListener('click',() => {
+            let link = document.querySelector("#downloadBtn a");
+            link.click();
+        });
     </script>
 
 </body>

@@ -210,3 +210,15 @@
     font-size: 1rem;
     line-height: 100%;
 }
+
+#downloadBtn{
+    margin-top:10px;
+    visibility:hidden;
+}
+
+#downloadBtn a{
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    color : #fff;
+    font-size: 1rem;
+}

@@ -1,5 +1,4 @@
 #navigation-bar .social li{
-
     width: 32px;
     height: 32px;
 }
@@ -47,4 +46,61 @@
 .component.range input{
     position: relative;
     top: 10px;
+}
+
+.datas{
+    padding: 0px;
+    min-width: 96%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.datas .card{
+    margin: 3px;
+}
+
+.datas .col-3 {
+    width: 48%;
+}
+
+.datas #ratio {
+    width: 98%;
+    order: 3;
+}
+
+.datas .card-header {
+    padding: 16px 2px;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #062e51;
+    color: #fff;
+}
+
+.datas .card-body {
+    padding: 16px 8px;
+    font-size: 1.75rem;
+    text-align: center;
+    color: #062e51;
+}
+
+#containerOutput{
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    width: 96%;
+}
+
+.alert {
+    width: 96%;
+    max-width: 380px;
+    padding:20px 5px;
+}
+
+.alert .message {
+    padding:10px 5px 10px 30px;
+}
+
+.alert .fa-exclamation-circle{
+    left: 3px;
 }

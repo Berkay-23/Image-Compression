@@ -1,5 +1,5 @@
 #containerMain {
-    margin: 1rem ;
+    margin: 15px auto; ;
     padding: 0.5rem;
     border: 0.2rem solid #062e51;
     border-radius: 0.5rem;
@@ -28,4 +28,38 @@
 .component.range input{
     position: relative;
     top: 3px;
+}
+
+.datas{
+    width: 70%;
+}
+
+.datas .col-3{
+    width: 32%; 
+}
+
+.datas .card{
+    margin: 8px 0;
+}
+
+.datas .card-header {
+    padding: 10px 2px;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #062e51;
+    color: #fff;
+}
+
+.datas .card-body {
+    padding: 10px 2px;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #062e51;
+}
+
+#containerOutput{
+    margin: auto ;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    width: 70%;
 }

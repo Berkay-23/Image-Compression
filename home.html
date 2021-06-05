@@ -34,11 +34,8 @@
 <body>
 
     <header>
-
         <div>
-
             <nav id="navigation-bar" class="">
-
                 <h1>Image Compression</h1>
 
                 <ul class="social">
@@ -49,13 +46,9 @@
                     <li><a href="https://www.youtube.com/watch?v=G-CUlMbi_RI&list=PLVkmv8ZvDX3dpgjncPJrzT1W2ZNc8UeAO"
                             target="_blank"><i class="fab fa-youtube"></i></a></li>
                 </ul>
-
             </nav>
-
         </div>
-
     </header>
-
 
     <div class="container" id="containerMain">
 
@@ -101,79 +94,94 @@
         </div>
     </div>
 
-    <div class="datas">
-        <span>Orijinal : <span class="inpSize"> - </span></span>
-        <span><span class="ratio"> -% </span></span>
-        <span>Sıkıştırılmış : <span class="outSize"> - </span></span>
+    <div class="datas flex-container">
+
+        <div class="card col-3">
+            <div class="card-header">
+                Orijinal Boyut (mb)
+            </div>
+            <div class="card-body">
+                <span class="inpSize"> - </span>
+            </div>
+        </div>
+
+        <div class="card col-3" id="ratio">
+            <div class="card-header">
+                Sıkıştırma Oranı
+            </div>
+            <div class="card-body">
+                <span class="ratio"> - </span>
+            </div>
+        </div>
+
+        <div class="card col-3">
+            <div class="card-header">
+                Sıkıştırılmış Boyut (mb)
+            </div>
+            <div class="card-body">
+                <span class="outSize"> - </span>
+            </div>
+        </div>
     </div>
 
     <br>
 
-    <di class="outputImage">
-        <img src="" alt="" class="output" id="after">
+    <div class="container outputImage" id="containerOutput">
+        <img src="" alt="" class="output" id="afterImage">
+    </div>
+
+    <div class="alert default">
+
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="message">Henüz bir görüntü seçmediniz.</span>
+
+        <span class="close-button">
+            <span class="fas fa-times"></span>
+        </span>
     </div>
 
     <script src="javascript/app.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/browser-image-compression@1.0.14/dist/browser-image-compression.js"></script>
 
-
     <script>
-
         const inputFile = document.querySelector("#inpFile");
         const buttonCompress = document.querySelector("#btnImageCompress");
         const inpSlider = document.querySelector(".range input");
-
+        const outputFile = document.querySelector("#afterImage");
         const inpSize = document.querySelector(".inpSize");
         const outSize = document.querySelector(".outSize");
         const ratio = document.querySelector(".ratio");
 
-        inputFile.addEventListener("change", ImagePreview);
-        buttonCompress.addEventListener("click", compressImage);
+        inpFile.addEventListener("change", ImagePreview);
+        btnCompress.addEventListener("click", compressImage);
 
         let file = null;
 
         function ImagePreview() {
-            const image = inputFile.files[0];
+            const image = inpFile.files[0];
             file = image;
         }
 
-console.log(inpSize)
-
         function compressImage(event, useWebWorker) {
 
-            console.log('input', file)
-            inpSize.textContent = (((file.size)/1024)/1024).toFixed(2) + 'mb';
-            
             var options = {
                 maxSizeMB: parseFloat(inpSlider.value),
                 maxWidthOrHeight: parseFloat('1024'),
-                //useWebWorker: true,
-                //onProgress: onProgress
             }
 
-            imageCompression(file, options).then(function (output) {
-                console.log('output', output)
-                const downloadLink = URL.createObjectURL(output)
+            if (file) {
+                imageCompression(file, options).then(function (output) {
 
-                outSize.textContent = (((output.size)/1024)/1024).toFixed(2) + 'mb';
-                ratio.textContent = '%' + ((((file.size)/1024)/1024).toFixed(2)/(((output.size)/1024)/1024).toFixed(2)).toFixed(2);
+                    inpSize.textContent = (((file.size) / 1024) / 1024).toFixed(2);
+                    outSize.textContent = (((output.size) / 1024) / 1024).toFixed(2);
+                    ratio.textContent = '%' + ((((file.size) / 1024) / 1024).toFixed(2) / (((output.size) / 1024) / 1024).toFixed(2)).toFixed(2);
 
-                // logDom.innerHTML += '&nbsp;<a href="' + downloadLink + '" download="' + file.name + '">download compressed image</a>'
-                document.getElementById('after').src = downloadLink
-            })
-
-
-            // await uploadToServer(output)
-
-            // function onProgress(p) {
-            //     progressDom.innerHTML = '(' + p + '%' + ')'
-            // }
+                    document.getElementById('afterImage').src = URL.createObjectURL(output);
+                });
+            }
         }
-
-
     </script>
 
 </body>

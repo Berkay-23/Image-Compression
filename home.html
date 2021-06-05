@@ -183,6 +183,10 @@
                     outSize.textContent = (((output.size) / 1024) / 1024).toFixed(2);
                     ratio.textContent = '%' + ((((file.size) / 1024) / 1024).toFixed(2) / (((output.size) / 1024) / 1024).toFixed(2)).toFixed(2);
 
+                    if(document.querySelector("#downloadBtn a")){
+                        document.querySelector("#downloadBtn a").remove();
+                    }
+
                     downloadURL = URL.createObjectURL(output);
                     downloadButton.style.visibility = "visible";
                     downloadButton.innerHTML += '&nbsp;<a href="' + downloadURL + '" download="' + file.name + '">Görseli İndir</a>'

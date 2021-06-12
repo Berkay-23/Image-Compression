@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
@@ -33,116 +33,142 @@
 
 <body>
 
-    <header>
+    <header id="header"> 
+
         <div>
             <nav id="navigation-bar" class="">
                 <h1>Image Compression</h1>
-
-                <ul class="social">
-                    <li><a href="https://www.linkedin.com/in/berkay-%C3%A7avu%C5%9Fo%C4%9Flu-289484202/"
-                            target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                    <li><a href="https://github.com/Berkay-23/Image-Compression" target="_blank"><i
-                                class="fab fa-github"></i></a></li>
-                    <li><a href="https://www.youtube.com/watch?v=G-CUlMbi_RI&list=PLVkmv8ZvDX3dpgjncPJrzT1W2ZNc8UeAO"
-                            target="_blank"><i class="fab fa-youtube"></i></a></li>
-                </ul>
             </nav>
         </div>
+
     </header>
 
-    <div class="container" id="containerMain">
+    <main id="main">
 
-        <form>
-            <div class="container input-group" id="containerComponents">
+        <div class="container" id="containerMain">
 
-                <div class="component col-7">
-                    <input type="file" class="form-control" id="inpFile">
-                </div>
+            <form>
+                <div class="container input-group" id="containerComponents"> <!-- Girdi görselinin ve diğer bileşenlerin bulunduğu konteyner -->
 
-                <div class="component col-3">
-                    <select class="form-select">
-                        <option selected disabled>Sıkıştırma Formatı Seçin</option>
-                        <option value="jpeg">JPeg</option>
-                        <option value="webp">WebP</option>
-                    </select>
-                </div>
-
-                <div class="component d-grid col-2">
-                    <button class="btn btn-primary" type="button" id="btnImageCompress">Resmi Sıkıştır</button>
-                </div>
-
-                <div class="component quality col-12">
-
-                    <span> Quality</span>
-
-                    <div class="component range col-4">
-                        <input type="range" class="form-range" min="0.01" max="1" step="0.01" value="0.5"
-                            id="customRange3">
+                    <div class="component col-7"> <!-- İnput bileşeni-->
+                        <input type="file" class="form-control" id="inpFile"> 
                     </div>
 
-                    <label class="value"></label>
+                    <div class="component col-3"> <!-- Selection bileşeni-->
+                        <select class="form-select">
+                            <option selected disabled>Sıkıştırma Formatı Seçin</option>
+                            <option value="jpeg">JPeg</option>
+                            <option value="webp">WebP</option>
+                        </select>
+                    </div>
 
+                    <div class="component d-grid col-2"> <!-- Sıkıştırma butonu -->
+                        <button class="btn btn-primary" type="button" id="btnImageCompress">Resmi Sıkıştır</button>
+                    </div>
+
+                    <div class="component quality col-12"> <!-- Kaltie değerini alan scrool bar -->
+                        
+                        <span> Kalite</span>
+
+                        <div class="component range col-4">
+                            <input type="range" class="form-range" min="0.01" max="1" step="0.01" value="0.5"
+                                id="customRange3">
+                        </div>
+
+                        <label class="value"></label> <!-- Görselin kalite değeri -->
+
+                    </div>
+                </div>
+            </form>
+
+            <div class="imagePreview" id="image-preview"> <!-- Girdi olarak verilen görselin bulunduğu konteyner -->
+
+                <img src="" alt="Image Preview" class="image-preview__image">
+                <span class="image-preview__default-text">Image Preview</span>
+
+            </div>
+        </div>
+
+        <div class="datas flex-container"> <!-- Görselin sıkıştırılma verilernin verildiği kartlar -->
+
+            <div class="card col-3">
+                <div class="card-header">
+                    Orijinal Boyut (mb)
+                </div>
+                <div class="card-body">
+                    <span class="inpSize"> - </span>
                 </div>
             </div>
-        </form>
 
-        <div class="imagePreview" id="image-preview">
-
-            <img src="" alt="Image Preview" class="image-preview__image">
-            <span class="image-preview__default-text">Image Preview</span>
-
-        </div>
-    </div>
-
-    <div class="datas flex-container">
-
-        <div class="card col-3">
-            <div class="card-header">
-                Orijinal Boyut (mb)
+            <div class="card col-3" id="ratio">
+                <div class="card-header">
+                    Sıkıştırma Oranı
+                </div>
+                <div class="card-body">
+                    <span class="ratio"> - </span>
+                </div>
             </div>
-            <div class="card-body">
-                <span class="inpSize"> - </span>
-            </div>
-        </div>
 
-        <div class="card col-3" id="ratio">
-            <div class="card-header">
-                Sıkıştırma Oranı
-            </div>
-            <div class="card-body">
-                <span class="ratio"> - </span>
+            <div class="card col-3">
+                <div class="card-header">
+                    Sıkıştırılmış Boyut (mb)
+                </div>
+                <div class="card-body">
+                    <span class="outSize"> - </span>
+                </div>
             </div>
         </div>
 
-        <div class="card col-3">
-            <div class="card-header">
-                Sıkıştırılmış Boyut (mb)
-            </div>
-            <div class="card-body">
-                <span class="outSize"> - </span>
+        <br>
+
+        <div class="container outputImage" id="containerOutput"> <!-- Sıkıştırılmış görselin konteynerı-->
+            <img src="" alt="" class="output" id="afterImage">
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" id="downloadBtn" type="button"> </button>
             </div>
         </div>
-    </div>
 
-    <br>
+        <div class="alert default"> <!-- Uyarı kutusu -->
 
-    <div class="container outputImage" id="containerOutput">
-        <img src="" alt="" class="output" id="afterImage">
+            <span class="fas fa-exclamation-circle"></span>
+            <span class="message">Henüz bir görüntü seçmediniz.</span>
 
-        <div class="d-grid gap-2">
-            <button class="btn btn-primary" id="downloadBtn" type="button"> </button>
+            <span class="close-button">
+                <span class="fas fa-times"></span>
+            </span>
+
         </div>
-    </div>
 
-    <div class="alert default">
+    </main>
 
-        <span class="fas fa-exclamation-circle"></span>
-        <span class="message">Henüz bir görüntü seçmediniz.</span>
+    <footer id="footer">
 
-        <span class="close-button">
-            <span class="fas fa-times"></span>
-        </span>
-    </div>
+        <div class="container wrapper">
+
+            <div class="button"> <!-- gitHub butonu -->
+                <div class="icon"><i class="fab fa-github"></i></div>
+                <span>GitHub</span>
+            </div>
+
+            <div class="button"> <!-- google drive butonu -->
+                <div class="icon"><i class="fab fa-google-drive"></i></div>
+                <span>Google Drive</span>
+            </div>
+
+            <div class="button"> <!-- youtube butonu -->
+                <div class="icon"><i class="fab fa-youtube"></i></div>
+                <span>YouTube</span>
+            </div>
+
+            <div class="button"> <!-- linkedin butonu  -->
+                <div class="icon"><i class="fab fa-linkedin-in"></i></div>
+                <span>LinkedIn</span>
+            </div>
+            
+        </div>
+
+    </footer>
 
     <script src="javascript/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
@@ -164,20 +190,20 @@
 
         let file = null;
 
-        function ImagePreview() {
+        function ImagePreview() { // Seçilen görseli file değişkenine atıyan fonksiyon
             const image = inpFile.files[0];
             file = image;
         }
 
-        function compressImage(event, useWebWorker) {
+        function compressImage(event, useWebWorker) { // Sıkıştırma algoritmasının çalıştığı fonksiyon
 
-            var options = {
+            var options = { // Görselin boyut ve yükseklik/uzunluk değerleri atanıyor 
                 maxSizeMB: parseFloat(inpSlider.value),
                 maxWidthOrHeight: parseFloat('1024'),
             }
 
-            if (file) {
-                imageCompression(file, options).then(function (output) {
+            if (file) { 
+                imageCompression(file, options).then(function (output) { // Sıkıştırma işlemi ve sıkıştırılan görselin verilerini yazan fonksiyon
 
                     inpSize.textContent = (((file.size) / 1024) / 1024).toFixed(2);
                     outSize.textContent = (((output.size) / 1024) / 1024).toFixed(2);
@@ -195,7 +221,7 @@
             }
         }
 
-        downloadButton.addEventListener('click',() => {
+        downloadButton.addEventListener('click',() => { // Sıkıştırılmış görselin indirilmesi için linke yönlendiren buton
             let link = document.querySelector("#downloadBtn a");
             link.click();
         });

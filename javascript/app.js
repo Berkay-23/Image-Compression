@@ -1,29 +1,29 @@
-const inpFile = document.querySelector("#inpFile");
-const previewContainer = document.querySelector(".imagePreview");
-const previewImage = previewContainer.querySelector(".image-preview__image");
-const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
-const btnCompress = document.querySelector("#btnImageCompress");
-const slideValue = document.querySelector(".value");
-const inputSlider = document.querySelector(".range input");
-const containerOutput = document.getElementById('containerOutput');
-const alert = document.querySelector(".alert");
-const closeButton = document.querySelector(".close-button");
+const inpFile = document.querySelector("#inpFile"); // Görselin seçildiği component
+const previewContainer = document.querySelector(".imagePreview"); // Seçilen görselin yerleşeği konteyner 
+const previewImage = previewContainer.querySelector(".image-preview__image"); // Seçilen görsel
+const previewDefaultText = previewContainer.querySelector(".image-preview__default-text"); // Görsel yokken konteynerda bulunan yazı
+const btnCompress = document.querySelector("#btnImageCompress"); // Sıkıştırma butonu
+const slideValue = document.querySelector(".value"); // Kalite scroll barın değeri
+const inputSlider = document.querySelector(".range input"); // Kalite scroll barı
+const containerOutput = document.getElementById('containerOutput'); // Sıkışmış görselin yerleşeceği konteyner
+const alert = document.querySelector(".alert"); // Uyarı Kutusu
+const closeButton = document.querySelector(".close-button"); // Uyarı kutusunu kapatma butonu
 
-inpFile.addEventListener("change", ImagePreview);
+inpFile.addEventListener("change", ImagePreview); 
 btnCompress.addEventListener("click", onClick);
 closeButton.addEventListener("click", alertClose);
 
 let image = null;
 
-function ImagePreview() {
+function ImagePreview() { // Seçilen görselin ilgili konteynera yerleştirilmesini sağlayan fonksiyon
 
-    const file = inpFile.files[0];
+    const file = inpFile.files[0]; // Görüntü 
 
     if (file) {
-        const reader = new FileReader();
+        const reader = new FileReader(); // Okuyucu nesnesi
 
-        previewDefaultText.style.display = "none";
-        previewImage.style.display = "block";
+        previewDefaultText.style.display = "none"; 
+        previewImage.style.display = "block"; 
 
         reader.addEventListener("load", function () {
             previewImage.setAttribute("src", this.result);
@@ -44,7 +44,7 @@ inputSlider.oninput = (() => {
     slideValue.textContent = value;
 });
 
-function onClick() {
+function onClick() { // Sıkıştırma butonuna basıldığnda ilgili uyarıları ve medya etiketlerine göre css kodunu çalıştıran fonksiyon
 
     if (file) {
 
@@ -60,31 +60,31 @@ function onClick() {
 
             containerOutput.style.border = "0.2rem solid #062e51";
         }
-        else { // phone media query
+        else { // mobile media query
 
             containerOutput.style.border = "0.2rem solid #062e51";
         }
 
-        alertDataUpload("success");
+        alertDataUpload("success"); // Başarı uyarısı
     }
     else {
-        alertDataUpload("warning");
+        alertDataUpload("warning"); // Uyarı uyarısı
     }
 }
 
-function alertClose() {
+function alertClose() { // Uyarı metnini gizleyen fonksiyon
     alert.classList.remove("show");
     alert.classList.add("hide");
 }
 
-function alertDataUpload(alertType) {
+function alertDataUpload(alertType) { // İlgili duruma göre uyarı metnini ve css kodlarını oluşturan/çalıştıran fonksiyon
 
-    let icon = document.querySelector(".fa-exclamation-circle");
-    let iconCancel = document.querySelector(".fa-times");
-    let message = document.querySelector(".message");
-    let cancel = closeButton;
+    let icon = document.querySelector(".fa-exclamation-circle"); // İkon
+    let iconCancel = document.querySelector(".fa-times"); // Çarpı İkonu
+    let message = document.querySelector(".message"); // Mesaj
+    let cancel = closeButton; // Uyarı kutusunu kapatma butonu
 
-    if (alertType == "success") {
+    if (alertType == "success") { // Başarı uyarısı ise çalışacak css kodları
 
         icon.style.visibility = "hidden";
 
@@ -102,7 +102,7 @@ function alertDataUpload(alertType) {
         alert.classList.add("show");
     }
 
-    else {
+    else { // Uyarı uyarısı ise çalışacak css kodları
         icon.style.visibility = "visible";
 
         alert.style.background = "#ffdb9b";
@@ -127,3 +127,25 @@ function alertDataUpload(alertType) {
         alertClose();
     }, 3000);
 }
+
+const btnGithub = document.querySelector(".wrapper .button:nth-child(1)"); // github butonu
+const btnDocument = document.querySelector(".wrapper .button:nth-child(2)"); // google drive butonu
+const btnYoutube = document.querySelector(".wrapper .button:nth-child(3)"); // youtube butonu
+const btnLinkedin = document.querySelector(".wrapper .button:nth-child(4)"); // linedin butonu
+
+// Alt taraftaki fonksiyonlar butona tıklandığında ilgili linklere yönlendirme yapmkatadır.
+
+btnGithub.addEventListener("click", () => {
+    window.open("https://github.com/Berkay-23/Image-Compression",'_blank')
+});
+btnDocument.addEventListener("click", () => {
+    window.open("https://drive.google.com/drive/folders/1bBixGRD9E3VmzUcQqdnSTfgYAVhw_-t7?usp=sharing",'_blank')
+});
+btnYoutube.addEventListener("click", () => {
+    window.open("https://www.youtube.com/watch?v=G-CUlMbi_RI&list=PLVkmv8ZvDX3dpgjncPJrzT1W2ZNc8UeAO",'_blank')
+});
+btnLinkedin.addEventListener("click", () => {
+    window.open("https://www.linkedin.com/in/berkay-%C3%A7avu%C5%9Fo%C4%9Flu-289484202/",'_blank')
+});
+
+// ----------------------------------------------------------------

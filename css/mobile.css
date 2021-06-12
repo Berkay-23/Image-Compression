@@ -1,14 +1,6 @@
-#navigation-bar .social li{
-    width: 32px;
-    height: 32px;
-}
-
-#navigation-bar .social li a{
-    font-size: 1.25rem;
-}
-
 #navigation-bar h1{
-    font-size: 1.5rem;
+    text-align: center;
+    font-size: 2rem;
 }
 
 #containerMain {
@@ -103,4 +95,51 @@
 
 .alert .fa-exclamation-circle{
     left: 3px;
+}
+
+.wrapper{
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: max-content;
+    margin: 10px 0px;
+    padding: 5px;
+}
+
+.wrapper .button{
+    width: 170px;
+    margin: 5px 2px 2px 5px;
+}
+
+.wrapper .button:hover{
+    width: 170px;
+    background-color:rgb(105, 105, 105);
+    color: #fff;
+}
+
+.wrapper .button span{
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.wrapper .button:nth-child(1) .icon{
+    background-color: #24292E;
+    color: #fff;
+}
+
+.wrapper .button:nth-child(2) .icon{
+    background-color: #2B579A;
+    color: #fff;
+}
+
+.wrapper .button:nth-child(3) .icon{
+    background-color: #FF0000;
+    color: #fff;
+}
+
+.wrapper .button:nth-child(4) .icon{
+    background-color: #0A66C2;
+    color: #fff;
 }
